@@ -1,0 +1,21 @@
+﻿@page "/annonces"
+@inject IAnnoncesService AnnoncesService
+
+<PageTitle>Annonces</PageTitle>
+
+<h3>Annonce</h3>
+
+@foreach (var annonce in AnnoncesService.Annonce)
+{
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">@annonce.Titre</h5>
+			<p class="card-text">@annonce.Description</p>
+		</div>
+	</div>
+}
+
+@code {
+    protected override async Task OnInitializedAsync() => await AnnoncesService.GetAnnonces();
+
+}
